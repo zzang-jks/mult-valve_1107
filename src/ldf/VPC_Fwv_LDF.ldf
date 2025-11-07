@@ -1,0 +1,187 @@
+
+
+LIN_description_file;
+LIN_protocol_version = "2.2";
+LIN_language_version = "2.2";
+LIN_speed = 19.2 kbps;
+
+Nodes {
+  Master: LIN_Master, 1 ms, 0 ms ;
+  Slaves: VPC_Fwv_Slave ;
+}
+
+Signals {
+  Fwv_Target_Mode: 3, 0, LIN_Master, VPC_Fwv_Slave ;
+  Fwv_MoveEnable: 1, 0, LIN_Master, VPC_Fwv_Slave ;
+  Fwv_Initial: 1, 0, LIN_Master, VPC_Fwv_Slave ;
+  Fwv_ForcedDiag: 1, 0, LIN_Master, VPC_Fwv_Slave ;
+  Fwv_Reserved1: 8, 0, LIN_Master, VPC_Fwv_Slave ;
+  Fwv_Actual_Mode: 3, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Position_Fault: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_FaultMode: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_ProtectMode: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_InitialSta: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Calibration_Fail: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_MoveEnable_Status: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Motor_Stall: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Short_Circuit: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Open_Circuit: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Undervoltage: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Overvoltage: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Overcurrent: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Overtemperature: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Diag_Forced_Status: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Position_Sensor_Fault: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_CommErr: 1, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_SW_Version: 16, 0, VPC_Fwv_Slave, LIN_Master ;
+  Fwv_Stall_State: 2, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG1_U8_1: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG1_U8_2: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG1_U8_3: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG1_U8_4: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG1_U8_5: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG1_U8_6: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG1_U8_7: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG1_U8_8: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG2_U8_1: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG2_U8_2: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG2_U8_3: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG2_U8_4: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG2_U8_5: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG2_U8_6: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG2_U8_7: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG2_U8_8: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG3_U8_1: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG3_U8_2: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG3_U8_3: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG3_U8_4: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG3_U8_5: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG3_U8_6: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG3_U8_7: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+  DEBUG3_U8_8: 8, 0, VPC_Fwv_Slave, LIN_Master ;
+}
+
+Diagnostic_signals {
+  MasterReqB0: 8, 0 ;
+  MasterReqB1: 8, 0 ;
+  MasterReqB2: 8, 0 ;
+  MasterReqB3: 8, 0 ;
+  MasterReqB4: 8, 0 ;
+  MasterReqB5: 8, 0 ;
+  MasterReqB6: 8, 0 ;
+  MasterReqB7: 8, 0 ;
+  SlaveRespB0: 8, 0 ;
+  SlaveRespB1: 8, 0 ;
+  SlaveRespB2: 8, 0 ;
+  SlaveRespB3: 8, 0 ;
+  SlaveRespB4: 8, 0 ;
+  SlaveRespB5: 8, 0 ;
+  SlaveRespB6: 8, 0 ;
+  SlaveRespB7: 8, 0 ;
+}
+
+
+
+Frames {
+  VPC_Fwv_Ctrl: 17, LIN_Master, 8 {
+    Fwv_Target_Mode, 0 ;
+    Fwv_MoveEnable, 3 ;
+    Fwv_Initial, 4 ;
+    Fwv_ForcedDiag, 5 ;
+    Fwv_Reserved1, 8 ;
+  }
+  VPC_Fwv_Resp: 18, VPC_Fwv_Slave, 8 {
+    Fwv_Actual_Mode, 0 ;
+    Fwv_Position_Fault, 3 ;
+    Fwv_FaultMode, 4 ;
+    Fwv_ProtectMode, 5 ;
+    Fwv_InitialSta, 6 ;
+    Fwv_Calibration_Fail, 7 ;
+    Fwv_MoveEnable_Status, 8 ;
+    Fwv_Motor_Stall, 9 ;
+    Fwv_Short_Circuit, 10 ;
+    Fwv_Open_Circuit, 11 ;
+    Fwv_Undervoltage, 12 ;
+    Fwv_Overvoltage, 13 ;
+    Fwv_Overcurrent, 14 ;
+    Fwv_Overtemperature, 15 ;
+    Fwv_Diag_Forced_Status, 16 ;
+    Fwv_Position_Sensor_Fault, 17 ;
+    Fwv_CommErr, 18 ;
+    Fwv_SW_Version, 24 ;
+    Fwv_Stall_State, 40 ;
+  }
+}
+
+
+
+Diagnostic_frames {
+  MasterReq: 0x3c {
+    MasterReqB0, 0 ;
+    MasterReqB1, 8 ;
+    MasterReqB2, 16 ;
+    MasterReqB3, 24 ;
+    MasterReqB4, 32 ;
+    MasterReqB5, 40 ;
+    MasterReqB6, 48 ;
+    MasterReqB7, 56 ;
+  }
+  SlaveResp: 0x3d {
+    SlaveRespB0, 0 ;
+    SlaveRespB1, 8 ;
+    SlaveRespB2, 16 ;
+    SlaveRespB3, 24 ;
+    SlaveRespB4, 32 ;
+    SlaveRespB5, 40 ;
+    SlaveRespB6, 48 ;
+    SlaveRespB7, 56 ;
+  }
+}
+
+Node_attributes {
+  VPC_Fwv_Slave{
+    LIN_protocol = "2.2" ;
+    configured_NAD = 0x1 ;
+    initial_NAD = 0x1 ;
+    product_id = 0x0, 0x0, 255 ;
+    response_error = Fwv_CommErr ;
+    P2_min = 50 ms ;
+    ST_min = 0 ms ;
+    N_As_timeout = 1000 ms ;
+    N_Cr_timeout = 1000 ms ;
+    configurable_frames {
+      VPC_Fwv_Resp ;
+      VPC_Fwv_Ctrl ;
+    }
+  }
+}
+
+Schedule_tables {
+ VPC_Multi_Valve {
+    VPC_Fwv_Ctrl delay 100 ms ;
+    VPC_Fwv_Resp delay 100 ms ;
+  }
+}
+
+
+Signal_encoding_types {
+  Multi_SW_Version {
+    physical_value, 0, 65535, 1, 0 ;
+  }
+  Multi_Stall_State {
+    physical_value, 0, 3, 1, 0 ;
+  }
+  Multi_Target_Mode {
+    physical_value, 0, 7, 1, 0 ;
+  }
+  Zero_Or_One {
+    physical_value, 0, 1, 1, 0 ;
+  }
+}
+
+Signal_representation {
+  Multi_SW_Version: Fwv_SW_Version ;
+  Multi_Stall_State: Fwv_Stall_State ;
+  Multi_Target_Mode: Fwv_Target_Mode, Fwv_Actual_Mode ;
+  Zero_Or_One: Fwv_MoveEnable, Fwv_Initial, Fwv_ForcedDiag, Fwv_Position_Fault, Fwv_FaultMode, Fwv_ProtectMode, Fwv_InitialSta, Fwv_Calibration_Fail, Fwv_MoveEnable_Status, Fwv_Motor_Stall, Fwv_Short_Circuit, Fwv_Open_Circuit, Fwv_Undervoltage, Fwv_Overvoltage, Fwv_Overcurrent, Fwv_Overtemperature, Fwv_Diag_Forced_Status, Fwv_Position_Sensor_Fault, Fwv_CommErr ;
+}
