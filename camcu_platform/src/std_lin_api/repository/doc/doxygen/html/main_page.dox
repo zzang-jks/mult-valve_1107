@@ -1,0 +1,81 @@
+/** \mainpage Standard LIN API
+
+\section lin_api_into Introduction
+
+The LIN API is a network software layer that hides the details of a LIN network configuration
+(e.g. how signals are mapped into certain frames) for a user making an application program for an arbitrary ECU.
+Instead the user will be provided an API, which is focused on the signals transported on the LIN network.
+
+A <a href="https://gitlab.melexis.com/swcc-tools-projects/ldf_nodegen/blob/master/doc/LDF_LIN_Node_driver_generation_utility.docx">LDF-nodegen tool</a>
+is used to take care of the step from network configuration to ready made LDF-file dependent LIN API.
+This provides configuration flexibility.
+
+\section lin_api_structure Structure
+
+All LIN API can be included through \ref lin_api.h "lin_api.h".
+
+The LIN API consist of two parts:
+ -# Constant LIN API
+ -# LDF-dependent LIN API (\ref lin_signals.h "lin_signals.h")
+
+The constant LIN API is divided on three groups:
+ -# LIN Common API (\ref lin_api.h "lin_api.h")
+ -# LIN Slave specific API (\ref lin_api_sl.h "lin_api_sl.h")
+ -# LIN Master specific API (\ref lin_api_ma.h "lin_api_ma.h")
+
+The LDF-dependent LIN API (\ref lin_signals.h "lin_signals.h") is common for all used LIN interfaces.
+
+\section lin_api_mlx LIN API implementation details by Melexis
+
+\subsection lin_common_desc Common description
+The implementation of the Melexis Standard LIN API is based upon the
+<a href="https://gitlab.melexis.com/swcc-lib-mlx16/lib-lin/blob/f92461045455c3d418e4444f7256ce0d5519bdf0/doc/pdf_build/prebuild/mlx_lin_api.pdf">Melexis LIN Firmware API</a> commands and events. The Melexis Standard LIN API implements the Core API, Node Configuration and Identification commands as specified
+in the LIN 2.0 LIN 2.1 and LIN 2.2 specifications for a LIN slave.
+
+\image html melexis-sla.jpg width=500
+
+\subsection lin_calls Calls format
+Two versions exist for most of the API calls:
+ -# Static calls embed the name of the signal or interface in the name of the call (e.g. *l_u8 l_u8_rd_sss (void)*)
+ -# Dynamic calls provide the signal or interface as a parameter (e.g. *l_u8 l_u8_rd (l_signal_handle sss)*)
+
+The static API calls are implemented as much as possible.
+\note Dynamic calls are required for Node Configuration API
+
+The name of interface for static calls:
+ -# Slave - "sl1"
+ -# Master - "ma1"
+
+The name of interface for dynamic calls specified by enumeration ::l_ifc_handle.
+
+\subsection lin_calls_diff API interface differences from the Standard
+The l_u8 ld_read_by_id_callout (l_ifc_handle iii, l_u8 id, l_u8* pci, l_u8* data) has additinal parameter "pci" to specify variable "data" length plus one.
+
+\subsection lin_interact Interaction with LDF-dependent LIN API
+
+\subsubsection lin_signals Signals interaction functions
+The functions to interact with Signals has names as specified in the Standard, where "sss" - is Signal name from LDF-file.
+
+\subsubsection lin_flags Flags interaction functions
+Flags are local objects in a node and they are used to synchronise the application program with the LIN core.
+The flags will be automatically set by the LIN core and can only be tested or cleared by the application program.
+Flags may be attached to all types of frames. A flag is set when the frame/signal is considered to be transmitted
+respectively received.
+
+In Melexis implementation of Standard LIN API two types of flags are created:
+-# A flag that is attached to a Signal
+-# A flag that is attached to a Frame
+
+The function prototypes to interact with flags are specified by Standard:
+ -# *l_bool l_flg_tst_fff (void)* - Returns the current state of the flag specified by the name *fff*: returns zero if the flag is cleared, non-zero otherwise
+ -# *void l_flg_clr_fff (void)* - Sets the current value of the flag specified by the name *fff* to zero
+
+The flag name "fff" is implementation specific. In current implementation, Flag name consists of Signal/Frame name plus prefix "s_"
+for Signal and "f_" for Flag. For example, test flag function *l_bool l_flg_tst_s_engineTemp (void)* will be generated for
+Signal - "engineTemp".
+
+In the case both Master and Slave APIs are generated for the same device then the Flag name "fff" also includes the interface as additional prefix:
+"sl1_" for Slave Flags and "ma1_" for Master Flags.
+
+Find \ref lin_signals.h "lin_signals.h" for full list of generated functions for interaction with Signals and Flags based on LDF-file.
+*/
